@@ -96,14 +96,18 @@ export const getStaticProps: GetStaticProps = async () => {
   const giveaway = {
     title: giveawayResponse.data.title,
     description: giveawayResponse.data.description,
-    pokemon: giveawayResponse.data.pokemon.map((pkmn) => {
-      return {
-        name: pkmn.name,
-        dex: pkmn.dex,
-        src: `https://www.serebii.net/pokemongo/pokemon/${pkmn.dex}.png`,
-        quantity: pkmn.quantity,
-      };
-    }),
+    pokemon: giveawayResponse.data.pokemon
+      .map((pkmn) => {
+        return {
+          name: pkmn.name,
+          dex: pkmn.dex,
+          src: `https://www.serebii.net/pokemongo/pokemon/${pkmn.dex}.png`,
+          quantity: pkmn.quantity,
+        };
+      })
+      .sort((a, b) => {
+        return a.dex - b.dex;
+      }),
   };
 
   const mirrorTradePokemon = mirrorTradeResponse.data.pokemon.map((pkmn) => {
@@ -144,15 +148,27 @@ export const getStaticProps: GetStaticProps = async () => {
     title: mirrorTradeResponse.data.title,
     description: mirrorTradeResponse.data.description,
     pokemon: {
-      global: mirrorTradePokemon.filter((pkmn) => {
-        return pkmn.type === 'global';
-      }),
-      regional: mirrorTradePokemon.filter((pkmn) => {
-        return pkmn.type === 'regional';
-      }),
-      legendary: mirrorTradePokemon.filter((pkmn) => {
-        return pkmn.type === 'legendary';
-      }),
+      global: mirrorTradePokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'global';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
+      regional: mirrorTradePokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'regional';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
+      legendary: mirrorTradePokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'legendary';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
     },
   };
 
@@ -160,15 +176,27 @@ export const getStaticProps: GetStaticProps = async () => {
     title: forTradeResponse.data.title,
     description: forTradeResponse.data.description,
     pokemon: {
-      global: forTradePokemon.filter((pkmn) => {
-        return pkmn.type === 'global';
-      }),
-      regional: forTradePokemon.filter((pkmn) => {
-        return pkmn.type === 'regional';
-      }),
-      legendary: forTradePokemon.filter((pkmn) => {
-        return pkmn.type === 'legendary';
-      }),
+      global: forTradePokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'global';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
+      regional: forTradePokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'regional';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
+      legendary: forTradePokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'legendary';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
     },
   };
 
@@ -176,15 +204,27 @@ export const getStaticProps: GetStaticProps = async () => {
     title: lookingForResponse.data.title,
     description: lookingForResponse.data.description,
     pokemon: {
-      global: lookingForPokemon.filter((pkmn) => {
-        return pkmn.type === 'global';
-      }),
-      regional: lookingForPokemon.filter((pkmn) => {
-        return pkmn.type === 'regional';
-      }),
-      legendary: lookingForPokemon.filter((pkmn) => {
-        return pkmn.type === 'legendary';
-      }),
+      global: lookingForPokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'global';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
+      regional: lookingForPokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'regional';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
+      legendary: lookingForPokemon
+        .filter((pkmn) => {
+          return pkmn.type === 'legendary';
+        })
+        .sort((a, b) => {
+          return a.dex - b.dex;
+        }),
     },
   };
 
