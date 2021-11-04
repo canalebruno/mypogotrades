@@ -10,4 +10,4 @@ Using the following technologies
 
 ## 💻 About
 
-List of Pokémon available for trade on Pokémon GO. Add and remove Pokémon through Prismic CMS. You can check in `https://mypogotrades.vercel.app/`
+List of Pokémon available for trade on Pokémon GO. Add and remove Pokémon through Prismic CMS. You can check in https://mypogotrades.vercel.app/
