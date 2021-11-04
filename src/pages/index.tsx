@@ -1,4 +1,4 @@
-import { Flex, Spinner, Stack, Text } from '@chakra-ui/react';
+import { Accordion, Flex, Spinner, Stack, Text } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { TradeTable } from '../components/TradeTable';
@@ -56,9 +56,9 @@ export default function Home({
     <>
       <Flex direction="column" align="center" w="100vw" my="5rem">
         <Head>
-          <title>My PoGo Trade</title>
+          <title>My PoGo Trades</title>
         </Head>
-        <Text as="h1">My PoGo Trade</Text>
+        <Text as="h1">My PoGo Trades</Text>
         <Flex align="center">
           <Text textAlign="center" mr="1rem">
             2671 7145 2443 <br /> GnuViajante
@@ -68,12 +68,12 @@ export default function Home({
         {!giveaway ? (
           <Spinner />
         ) : (
-          <Stack>
+          <Accordion allowMultiple allowToggle>
             <TradeTable list={giveaway} />
             <TradeTableTypes list={mirrorTrade} />
             <TradeTableTypes list={forTrade} />
             <TradeTableTypes list={lookingFor} />
-          </Stack>
+          </Accordion>
         )}
       </Flex>
     </>
