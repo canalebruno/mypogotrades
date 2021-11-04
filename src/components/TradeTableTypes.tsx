@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { CopyButton } from './CopyButton';
 import { PokemonBox } from './PokemonBox';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 interface Pokemon {
   name: string;
@@ -38,6 +39,21 @@ interface TradeTableProps {
 }
 
 export function TradeTableTypes({ list }: TradeTableProps) {
+  const breakpoints = createBreakpoints({
+    sm: '30em',
+    md: '48em',
+    lg: '62em',
+    xl: '80em',
+    '2xl': '96em',
+  });
+
+  const responsiveTemplateColumns = [
+    'repeat(3,1fr)',
+    null,
+    null,
+    'repeat(6,1fr)',
+  ];
+
   function handleConvertToText(list: Trade) {
     if (list.pokemon.global.length > 0) {
       var copyGlobalList = list.pokemon.global.map((pkmn) => {
@@ -96,7 +112,7 @@ export function TradeTableTypes({ list }: TradeTableProps) {
                   Globals
                 </Text>
                 <SimpleGrid
-                  templateColumns="repeat(6,1fr)"
+                  templateColumns={responsiveTemplateColumns}
                   gridGap="1rem"
                   mt="2rem"
                 >
@@ -112,7 +128,7 @@ export function TradeTableTypes({ list }: TradeTableProps) {
                   Regionals
                 </Text>
                 <SimpleGrid
-                  templateColumns="repeat(6,1fr)"
+                  templateColumns={responsiveTemplateColumns}
                   gridGap="1rem"
                   mt="2rem"
                 >
@@ -128,7 +144,7 @@ export function TradeTableTypes({ list }: TradeTableProps) {
                   Legendaries
                 </Text>
                 <SimpleGrid
-                  templateColumns="repeat(6,1fr)"
+                  templateColumns={responsiveTemplateColumns}
                   gridGap="1rem"
                   mt="2rem"
                 >

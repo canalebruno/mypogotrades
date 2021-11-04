@@ -4,12 +4,12 @@ import {
   AccordionItem,
   AccordionPanel,
   Flex,
-  Img,
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
 import { CopyButton } from './CopyButton';
 import { PokemonBox } from './PokemonBox';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 interface Pokemon {
   name: string;
@@ -36,6 +36,14 @@ interface TradeTableProps {
 }
 
 export function TradeTable({ list }: TradeTableProps) {
+  const breakpoints = createBreakpoints({
+    sm: '30em',
+    md: '48em',
+    lg: '62em',
+    xl: '80em',
+    '2xl': '96em',
+  });
+
   function handleConvertToText(list: Trade) {
     const copyList = list.pokemon.map((pkmn) => {
       return `${pkmn.quantity}x ${pkmn.name}`;
@@ -61,7 +69,11 @@ export function TradeTable({ list }: TradeTableProps) {
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel>
-          <SimpleGrid templateColumns="repeat(6,1fr)" gridGap="1rem" mt="2rem">
+          <SimpleGrid
+            templateColumns={['repeat(3,1fr)', null, null, 'repeat(6,1fr)']}
+            gridGap="1rem"
+            mt="2rem"
+          >
             {list.pokemon.map((pkmn) => {
               return <PokemonBox key={pkmn.dex} pokemon={pkmn} />;
             })}

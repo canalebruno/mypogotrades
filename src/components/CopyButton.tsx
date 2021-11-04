@@ -19,7 +19,6 @@ export function CopyButton({ onClickFunction, label }: CopyButtonProps) {
   function handleCopyDone(e) {
     handleClicked();
     onClickFunction(e);
-    console.log(e);
   }
 
   return (

@@ -58,7 +58,9 @@ export default function Home({
         <Head>
           <title>My PoGo Trades</title>
         </Head>
-        <Text as="h1">My PoGo Trades</Text>
+        <Text as="h1" textAlign="center">
+          My PoGo Trades
+        </Text>
         <Flex align="center">
           <Text textAlign="center" mr="1rem">
             2671 7145 2443 <br /> GnuViajante
